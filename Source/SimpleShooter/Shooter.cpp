@@ -2,6 +2,7 @@
 
 
 #include "Shooter.h"
+#include "Components/InputComponent.h"
 
 // Sets default values
 AShooter::AShooter()
@@ -30,5 +31,26 @@ void AShooter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
 
+	PlayerInputComponent->BindAxis(TEXT("MoveForward"),this, &AShooter::MoveForward);
+	PlayerInputComponent->BindAxis(TEXT("MoveRight"),this, &AShooter::MoveRight);
+
+	PlayerInputComponent->BindAxis(TEXT("LookUp"),this, &APawn::AddControllerPitchInput);
+	PlayerInputComponent->BindAxis(TEXT("LookRight"),this, &APawn::AddControllerYawInput);
+	PlayerInputComponent->BindAction(TEXT("Jump"), EInputEvent::IE_Pressed, this, &ACharacter::Jump);
 }
+
+void AShooter::MoveForward(float AxisValue)
+{
+	AddMovementInput(GetActorForwardVector() * AxisValue);
+}
+
+void AShooter::MoveRight(float AxisValue)
+{
+	AddMovementInput(GetActorRightVector() * AxisValue);
+}
+
+// void AShooter::LookUp(float AxisValue)
+// {
+// 	AddControllerPitchInput(AxisValue);
+// }
 

@@ -26,4 +26,11 @@ public:
 	// Called to bind functionality to input
 	virtual void SetupPlayerInputComponent(class UInputComponent* PlayerInputComponent) override;
 
+private:
+	void MoveForward(float AxisValue);
+	// void LookUp(float AxisValue);
+	void MoveRight(float AxisValue);
+
+	UPROPERTY(EditAnywhere)
+	float RoataionRate = 10;
 };
