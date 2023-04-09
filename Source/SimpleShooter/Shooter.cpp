@@ -3,7 +3,7 @@
 
 #include "Shooter.h"
 #include "Components/InputComponent.h"
-
+#include "Gun.h"
 // Sets default values
 AShooter::AShooter()
 {
@@ -16,7 +16,7 @@ AShooter::AShooter()
 void AShooter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+	GetWorld()->SpawnActor<AGun>(GunClass);
 }
 
 // Called every frame
