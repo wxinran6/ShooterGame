@@ -51,7 +51,11 @@ void AGun::PullTrigger()
 	// DrawDebugCamera(GetWorld(), pawnLocation, pawnRotation, 90, 2, FColor::White, true);
 
 	FHitResult Hit;
-	bool bSuccess = GetWorld()->LineTraceSingleByChannel(Hit, pawnLocation, End, ECollisionChannel::ECC_GameTraceChannel1);
+	FCollisionQueryParams Params;
+	Params.AddIgnoredActor(this);
+	Params.AddIgnoredActor(GetOwner());
+
+	bool bSuccess = GetWorld()->LineTraceSingleByChannel(Hit, pawnLocation, End, ECollisionChannel::ECC_GameTraceChannel1, Params);
 	if (bSuccess)
 	{
 		FVector ShotDirection = - pawnRotation.Vector();
