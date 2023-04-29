@@ -59,7 +59,6 @@ void AGun::PullTrigger()
 			AController *OwnerController = GetOwnerController();
 			HitActor->TakeDamage(Damage, DamageEvent, OwnerController, this);
 		}
-
 	}
 }
 
