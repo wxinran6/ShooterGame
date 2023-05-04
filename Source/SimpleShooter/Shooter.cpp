@@ -100,7 +100,6 @@ void AShooter::LookUpRate(float AxisValue)
 void AShooter::LookRightRate(float AxisValue)
 {
 	AddControllerYawInput(AxisValue * RotationRate * GetWorld()->GetDeltaSeconds());
-
 }
 
 void AShooter::Shoot()
